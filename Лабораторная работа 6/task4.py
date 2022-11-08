@@ -10,7 +10,7 @@ def csv_to_list_dict(file) -> list[dict]:
         for index, line in enumerate(file):
             data = line.rstrip().split(",")
             list_.append({})
-            for i, _ in enumerate(headers):
+            for i, j in enumerate(headers):
                 list_[-1][headers[i]] = data[i]
     return list_
 
