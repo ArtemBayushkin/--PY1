@@ -4,7 +4,7 @@ from random import randint
 def get_unique_list_numbers(start=-10, stop=10, count=15) -> list[int]:
     list_num = []
     if count > -start+stop:
-        exit(print("Ошибка! Размер списка должен быть меньше указанного диапазона!"))
+        exit(print("Ошибка! Размер списка должен быть меньше или равен указанного диапазона!"))
     while len(list_num) != count:
         number = randint(start, stop)
         if number not in list_num:
