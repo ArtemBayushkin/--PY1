@@ -1,11 +1,11 @@
 OUTPUT_FILE = "output.csv"
 
 
-def to_csv_file(headers, rows):
+def to_csv_file(headers, rows, delimiter=",", nl='\n'):
     with open(OUTPUT_FILE, 'w') as f:
-        f.write(str(",".join(headers)) + "\n")
+        f.write(str(delimiter.join(headers)) + nl)
         for i in rows:
-            f.write(str(",".join(i)) + "\n")
+            f.write(str(delimiter.join(i)) + nl)
 
 
 headers_list = ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 'total_bedrooms', 'population',
