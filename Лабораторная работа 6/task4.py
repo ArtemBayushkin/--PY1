@@ -1,18 +1,18 @@
-import json
-
 INPUT_FILE = "input.csv"
+OUTPUT_FILE = "output.csv"
 
 
-def csv_to_list_dict(file) -> list[dict]:
-    with open(file) as file:
-        list_ = []
-        headers = file.readline().rstrip().split(",")
-        for index, line in enumerate(file):
-            data = line.rstrip().split(",")
-            list_.append({})
-            for i, j in enumerate(headers):
-                list_[-1][headers[i]] = data[i]
+def csv_to_list_dict(file_1, file_2, delimiter=",", nl='\n') -> list[dict]:
+    with open(file_1) as input_:
+        with open(file_2, 'w') as output:
+            list_ = []
+            headers = input_.readline().rstrip(nl).split(delimiter)
+            for line in input_:
+                data = line.rstrip(nl).split(delimiter)
+                list_.append(dict(zip(headers, data)))
+            for line1 in list_:
+                    output.write(str(line1)+nl)
     return list_
 
 
-print(json.dumps(csv_to_list_dict(INPUT_FILE), indent=4))
+print(csv_to_list_dict(INPUT_FILE, OUTPUT_FILE))
